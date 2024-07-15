@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+ "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- bean definitions here -->
+	<bean id="address" class="com.information.Address">
+		<property name="city" value="Pune" />
+		<property name="state" value="Maharashtra" />
+		<property name="pincode" value="411003" />
+	</bean>
+
+	<bean id="organization" class="com.information.Organization">
+		<property name="orgName" value="Wipro" />
+		<property name="orgAddress" ref="address" />
+	</bean>
+
+	<bean id="employee" class="com.information.Employee">
+		<property name="empName" value="Ganesh Pawar" />
+		<property name="empId" value="E101" />
+		<property name="empsalary" value="730000" />
+		<property name="empAddress" ref="address" />
+		<property name="empOrganization" ref="organization" />
+	</bean>
+
+	<bean id="cAddress" class="com.information.Address">
+		<constructor-arg value="Hydrabad" />
+		<constructor-arg value="Telangana" />
+		<constructor-arg value="30000" />
+	</bean>
+
+	<bean id="cOrganization" class="com.information.Organization">
+		<constructor-arg value="TCS"/>
+		<constructor-arg ref="cAddress"/>
+	</bean>
+	
+	<bean id="cEmployee" class="com.information.Employee">
+		<constructor-arg value="Govind Pawar"/>
+		<constructor-arg value="E102"/>
+		<constructor-arg value="90000"/>
+		<constructor-arg ref="cAddress"/>
+		<constructor-arg ref="cOrganization"/>
+	</bean>
+</beans>
